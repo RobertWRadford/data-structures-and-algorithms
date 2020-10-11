@@ -39,7 +39,7 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-    return /[0-9]/.test(input);
+  return /[0-9]/.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -64,10 +64,11 @@ CHALLENGE 4
 Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 ------------------------------------------------------------------------------------------------ */
 
+
 const citiesAtoJ = (arr) => {
   let cities = [];
   arr.forEach(city => {
-    if (/^[A-J]/.test(city) == true) {
+    if (/^[A-J]/.test(city)) {
       cities.push(city);
     }
   });
