@@ -44,7 +44,12 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  return /^\b[(A-Z)\d]*?\b(\.\b[(A-Z)\d]*?\b)?@\b[A-z \d]*?\b\.(com|net|org)$/i.test(email);
+  // first word at start of string 1-unlimited char alphanumeric
+  // take a literal . and then another 1-unlimited char alphanumeric or nothing
+  // literal @
+  // 1-unlimited char alphanumeric
+  // literal . and then either com, net, or org
+  return /^[(A-Z)\d]+?(\.[(A-Z)\d]+?)?@[A-Z \d]+?\.(com|net|org)$/i.test(email);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,6 +74,11 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
+  //either (###) with 3 digits inside at start of line, or ### 3 digits from start of line
+  // space, literal -, or nothing
+  // 3 digits
+  // space, literal -, or nothing
+  //4 digits and endline 
   return /^(\(\d{3}\)|\d{3})(\s|-)?\d{3}(\s|-)?\d{4}$/.test(phoneNumber);
 };
 
