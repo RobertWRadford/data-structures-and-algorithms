@@ -1,11 +1,11 @@
 class Node:
 
-	def __init__(self, value=None):
+	def __init__(self, value=None, next=None):
 		self.value = value
-		self.next = None
+		self.next = next
 
 	def __str__(self):
-		return f'{value}'
+		return f'{self.value}'
 
 class LinkedList:
 
@@ -16,30 +16,20 @@ class LinkedList:
 		if self.head == None: 
 			return
 		current = self.head
-		retStr = current.value
+		retStr = str(current)
 		while current.next:
 			current = current.next
 			retStr += ' ->'+str(current)
 		return retStr
 	
 	def insert(self, insertVal):
-		newVal = Node(insertVal)
-		if self.head == None: 
-			self.head = newVal
-			return
-		current = self.head
-		while current.next:
-			current = current.next
-		current.next = newVal
+		newVal = Node(insertVal, self.head)
+		self.head = newVal
 
 	def includes(self, checkVal):
-		if self.head == None:
-			return
 		current = self.head
-		if current == checkVal:
-			return True
-		while current.next:
-			current = current.next
-			if current == checkVal:
+		while current:
+			if current.value == checkVal:
 				return True
+			current = current.next	
 		return False
