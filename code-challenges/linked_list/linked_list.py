@@ -26,6 +26,56 @@ class LinkedList:
 		newVal = Node(insertVal, self.head)
 		self.head = newVal
 
+	def append(self, appVal):
+		newVal = Node(appVal)
+		if not self.head:
+			self.head = newVal
+			return
+		current = self.head
+		while current.next:
+			current = current.next
+		current.next = newVal
+
+	def insertBefore(self, insertVal, checkVal):
+		current = self.head
+		if not current: return
+		if current.value == checkVal:
+			newVal = Node(insertVal, current)
+			self.head = newVal
+		else:
+			while current.next:
+				if current.next.value == checkVal:
+					break
+				current = current.next
+			if current.next.value == checkVal:
+				newVal = Node(insertVal, current.next)
+				current.next = newVal
+
+
+	def insertAfter(self, insertVal, checkVal):
+		current = self.head
+		if not current: return
+		while current.next:
+			if current.value == checkVal:
+				break
+			current = current.next
+		if current.value == checkVal:
+			newVal = Node(insertVal, current.next)
+			current.next = newVal
+
+	def delete(self, delVal):
+		current = self.head
+		if not current: 
+			return
+		if current.value == delVal:
+			self.head = current.next
+		else:
+			while current.next:
+				if current.next.value == delVal:
+					current.next = current.next.next
+					break
+				current = current.next
+
 	def includes(self, checkVal):
 		current = self.head
 		while current:
