@@ -18,7 +18,7 @@ def test_multiple_inserts():
 	initialList = LinkedList()
 	initialList.insert(5)
 	initialList.insert(6)
-	assert initialList.head.value == 6 and initialList.head.next
+	assert initialList.head.value == 6 and initialList.head.next_
 
 def test_truthy_includes():
 	initialList = LinkedList()
@@ -111,3 +111,26 @@ def test_insert_delete_last():
 	initialList.delete(8)
 	assert str(initialList) == '5 ->6 ->7'
 
+def test_initialize_with_list():
+	initialList = LinkedList([5,6,7,8])
+	assert str(initialList) == '5 ->6 ->7 ->8'
+
+def test_nth_greater_than():
+	initialList = LinkedList([5,6,7,8])
+	assert initialList.nthFromEnd(8) == 'Exception'
+
+def test_nth_last():
+	initialList = LinkedList([5,6,7,8])
+	assert initialList.nthFromEnd(4) == 5
+
+def test_nth_negative():
+	initialList = LinkedList([5,6,7,8])
+	assert initialList.nthFromEnd(-2) == 'Exception'
+
+def test_nth_list_of_one():
+	initialList = LinkedList([5])
+	assert initialList.nthFromEnd(0) == 5
+
+def test_nth_average_use():
+	initialList = LinkedList([5,6,7,8,9,10,11])
+	assert initialList.nthFromEnd(3) == 8
