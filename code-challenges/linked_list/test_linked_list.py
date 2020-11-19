@@ -1,4 +1,6 @@
+import pytest
 from linked_list import Node, LinkedList
+from ll_zip import zipLists
 
 def test_instantiation():
 	initialList = LinkedList()
@@ -134,3 +136,31 @@ def test_nth_list_of_one():
 def test_nth_average_use():
 	initialList = LinkedList([5,6,7,8,9,10,11])
 	assert initialList.nthFromEnd(3) == 8
+
+def test_zip_lists_same_length():
+	first_list = LinkedList([5,6,7,8,9,10,11])
+	second_list = LinkedList([12,13,14,15,16,17,18])
+	new_head = zipLists(first_list, second_list)
+	assert str(first_list) == '5 ->12 ->6 ->13 ->7 ->14 ->8 ->15 ->9 ->16 ->10 ->17 ->11 ->18'
+
+def test_zip_lists_longer_first():
+	first_list = LinkedList([5,6,7,8,9])
+	second_list = LinkedList([12,13,14])
+	new_head = zipLists(first_list, second_list)
+	assert str(first_list) == '5 ->12 ->6 ->13 ->7 ->14 ->8 ->9'
+
+def test_zip_lists_longer_second():
+	first_list = LinkedList([5,6,7])
+	second_list = LinkedList([12,13,14,15,16])
+	new_head = zipLists(first_list, second_list)
+	assert str(first_list) == '5 ->12 ->6 ->13 ->7 ->14 ->15 ->16'
+
+def test_zip_lists_bad_input():
+	with pytest.raises(TypeError):
+		headless = zipLists('potato', 5)
+
+def test_zip_lists_empty():
+	first_list = LinkedList()
+	second_list = LinkedList([12,13,14])
+	new_head = zipLists(first_list, second_list)
+	assert new_head.value == 12
