@@ -1,5 +1,5 @@
 import pytest
-from fifo_animal_shelter import Animal, Waiting_List, Animal_Shelter
+from fifo_animal_shelter import Animal, Waiting_List, Animal_Shelter, InvalidOperationError
 
 def test_Animal_Shelter_sequence(default_shelter):
 	assert str(default_shelter) == 'dog ->cat ->cat ->cat ->dog ->dog ->cat'
@@ -12,6 +12,9 @@ def test_Animal_Shelter_no_dogs():
 	animal_shelter.welcome_in('cat')
 	assert animal_shelter.adoption_out('dog') == 'There are no dogs left.'
 
+def test_Animal_Adoption_adoption(default_shelter):
+	assert default_shelter.adoption_out('dog') == 'dog'
+
 def test_Animal_Shelter_adopt_first(default_shelter):
 	default_shelter.adoption_out('dog')
 	assert str(default_shelter) == 'cat ->cat ->cat ->dog ->dog ->cat'
@@ -22,7 +25,7 @@ def test_Animal_Shelter_adopt_not_first(default_shelter):
 
 def test_Animal_Shelter_adopt_no_preference(default_shelter):
 	default_shelter.adoption_out()
-	assert str(default_shelter) == 'cat ->cat ->dog ->dog ->cat'
+	assert str(default_shelter) == 'cat ->cat ->cat ->dog ->dog ->cat'
 
 def test_Animal_Shelter_wrong_animal_given():
 	animal_shelter = Animal_Shelter()
