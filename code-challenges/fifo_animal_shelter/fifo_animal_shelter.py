@@ -3,13 +3,13 @@ class Animal:
 
     def __init__(self, animal = None, next_ = None):
         self.animal = animal
-        self.next = next_
+        self.next_ = next_
 
 class InvalidOperationError(Exception):
     pass
 
 #Stack class
-class Waiting_list:
+class Waiting_List:
 
     def __init__(self):
         self.first_up = None
@@ -31,15 +31,15 @@ class Waiting_list:
         if not self.first_up:
             raise InvalidOperationError("All animals have been adopted!")
         bye_bye = self.first_up
-        self.first_up = self.first_up.next
+        self.first_up = self.first_up.next_
         return bye_bye.animal
 
 #Queue class
 class Animal_Shelter():
 
-    def __init__(self, waiting_list=Waiting_list(), temp_cage=Waiting_list()):
-        self.shelter = waiting_list
-        self.temp_cage = temp_cage
+    def __init__(self, waiting_list=None, temp_cage=None):
+        self.shelter = waiting_list if waiting_list else Waiting_List()
+        self.temp_cage = temp_cage if temp_cage else Waiting_List()
 
     def __str__(self):
         if not self.shelter.first_up:
@@ -68,9 +68,11 @@ class Animal_Shelter():
         if not self.shelter.first_up:
             raise InvalidOperationError("All animals have been adopted!")
         if animal_type in ['cat', 'dog']:
-            while self.shelter.whos_next() != animal_type:
-              self.temp_cage.intake(self.shelter.discharge())
-            if self.shelter.first_up != animal_type:
+            while self.shelter.first_up:
+                if self.shelter.first_up.animal == animal_type:
+                    break
+                self.temp_cage.intake(self.shelter.discharge())
+            if not self.shelter.first_up:
                 adopted = f'There are no {animal_type}s left.'
             else:
                 adopted = self.shelter.discharge()
@@ -80,7 +82,7 @@ class Animal_Shelter():
             adopted = self.shelter.discharge()
         else:
             raise InvalidOperationError("Sorry we only keep dogs & cats here.")
-        return adopted.animal
+        return adopted
 
 
 if __name__ == "__main__":
