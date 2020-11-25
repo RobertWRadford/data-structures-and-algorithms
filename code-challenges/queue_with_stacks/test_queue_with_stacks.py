@@ -7,7 +7,7 @@ def test_PseudoQueue_init_stack():
 	stack_one.push(10)
 	stack_one.push(5)
 	stack_one.push(0)
-	queue = PseudoQueue(stack_one, Stack())
+	queue = PseudoQueue(stack_one)
 	actual = str(queue)
 	expected = '0 ->5 ->10 ->15'
 	assert actual == expected
@@ -17,7 +17,7 @@ def test_PseudoQueue_enqueue():
 	stack_one.push(10)
 	stack_one.push(5)
 	stack_one.push(0)
-	queue = PseudoQueue(stack_one, Stack())
+	queue = PseudoQueue(stack_one)
 	queue.enqueue(15)
 	actual = str(queue)
 	expected = '0 ->5 ->10 ->15'
@@ -29,7 +29,7 @@ def test_PseudoQueue_dequeue():
 	stack_one.push(10)
 	stack_one.push(5)
 	stack_one.push(0)
-	queue = PseudoQueue(stack_one, Stack())
+	queue = PseudoQueue(stack_one)
 	queue.dequeue()
 	actual = str(queue)
 	expected = '5 ->10 ->15'
