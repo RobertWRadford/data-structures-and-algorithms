@@ -1,1 +1,1 @@
-<img src='assets/whiteboard.PNG'/>
+<img src='assets/whiteboard.png'/>
