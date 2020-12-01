@@ -1,9 +1,8 @@
 class Node:
 	
-	def __init__(self, value=None, parent=None, children=[]):
+	def __init__(self, value=None, children=None):
 		self.value = value
-		self.children = children
-		self.parent = None
+		self.children = [] if children is None else children
 
 class karyTree:
 
@@ -18,16 +17,19 @@ class karyTree:
 		while values:
 			for node in current_tier:
 				root = node
+				# print(root.value)
 				for i in range(k):
-					root.children.append(Node(values[0], root))
-					next_tier.append(root.children[i])
+					next_node = Node(values[0])
+					root.children.append(next_node)
+					next_tier.append(next_node)
 					values.pop(0)
+			# print([root.children[i].value for i, node in enumerate(root.children)])
 			current_tier.clear()
 			current_tier.extend(next_tier)
+			# print([current_tier[i].value for i in range(len(current_tier))])
 			next_tier.clear()
 
 if __name__ == '__main__':
 	kTree = karyTree(3, [i for i in range(1, 41)])
-	assert [kTree.head.children[i].value for i in range(3)] == [2,3,4]
-	assert [kTree.head.children[0].children[i].value for i in range(3)] == [5,6,7]
-	assert [kTree.head.children[0].children[0].children[i].value for i in range(3)] == [14,15,16]
+	print([kTree.head.children[0].children[i].value for i, values in enumerate(kTree.head.children[0].children)])
+	print([kTree.head.children[0].children[0].children[i].value for i, values in enumerate(kTree.head.children[0].children)])
