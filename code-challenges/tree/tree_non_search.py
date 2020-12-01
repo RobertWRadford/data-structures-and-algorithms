@@ -73,7 +73,7 @@ if __name__ == '__main__':
 	xmas.add(1)
 	xmas.add(3)
 	#            5
-	#      3           6
+	#      3            6
 	#   8     10    17     19
 	# 1   3
 	print(xmas.find_max())
