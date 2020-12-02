@@ -50,6 +50,7 @@ class BinaryTree:
 
 			root = current_row[0]
 			current_row.pop(0)
+			
 			if root.value > max_val:
 				max_val = root.value
 
