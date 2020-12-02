@@ -9,6 +9,10 @@ def test_single_root():
 	xmas = BinaryTree(Node(35))
 	assert xmas.head.value == 35
 
+def test_contains(default_tree):
+	assert default_tree.contains(60)
+	assert not default_tree.contains(100)
+
 def test_root_children():
 	xmas = BinaryTree(Node(35))
 	xmas.add(20)
@@ -41,4 +45,8 @@ def default_tree():
 	xmas.add(55)
 	xmas.add(77)
 	xmas.add(99)
+	#           35
+	#     20          60
+	#  10    24    45    90
+	# 2 18  22 28 43 55 77 99
 	return xmas

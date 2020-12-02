@@ -32,9 +32,12 @@ class KaryTree:
 				root = self.head
 		if value == root.value:
 			matched = True
+			return matched
 		# had to use a variable and bounce around here :?
 		for child in root.children:
-			matched = self.contains(value, child, matched)
+			if self.contains(value, child, matched):
+				matched = True
+				return matched
 		return matched
 
 	def preOrder(self, root=None, contents = []):

@@ -30,20 +30,32 @@ class BinaryTree:
 				self.add(value, root.right)
 
 
-	def contains(self, value=None, root=None):
+	def contains(self, value=None, root=None, matched=False):
+		
 		if value is None:
 			raise TypeError
+
 		if not root:
 			if not self.head:
 				return False
 			else:
 				root = self.head
+
 		if value == root.value:
 			return True
+
 		if value < root.value:
-			self.contains(value, root.left)
+			if root.left:
+				matched = self.contains(value, root.left, matched)
+			else:
+				return False
 		else:
-			self.contains(value, root.right)
+			if root.right:
+				matched = self.contains(value, root.right, matched)
+			else:
+				return False
+
+		return matched
 
 	def preOrder(self, root=None, contents = []):
 		if not root:
