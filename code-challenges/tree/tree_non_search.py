@@ -64,15 +64,17 @@ class BinaryTree:
 
 if __name__ == '__main__':
 	xmas = BinaryTree()
-	xmas.add(5)
-	xmas.add(3)
-	xmas.add(6)
-	xmas.add(8)
-	xmas.add(10)
-	xmas.add(17)
-	xmas.add(19)
-	xmas.add(1)
-	xmas.add(3)
+	for i in range(1000):
+		xmas.add(i)
+	# xmas.add(5)
+	# xmas.add(3)
+	# xmas.add(6)
+	# xmas.add(8)
+	# xmas.add(10)
+	# xmas.add(17)
+	# xmas.add(19)
+	# xmas.add(1)
+	# xmas.add(3)
 	#            5
 	#      3            6
 	#   8     10    17     19
