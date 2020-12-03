@@ -1,5 +1,5 @@
 import pytest
-from tree_non_search import Node, BinaryTree
+from tree_non_search import Node, BinaryTree, Queue, Stack
 
 def test_can_form_tree(default_tree):
 	assert default_tree.head.right.left.value == 17
@@ -11,6 +11,9 @@ def test_can_find_max(default_tree):
 def test_max_of_empty(default_tree):
 	xmas = BinaryTree()
 	assert xmas.find_max() is None
+
+def test_return_all_nodes(default_tree):
+	assert default_tree.traverse_tree() == [5,3,6,8,10,17,19,1,3]
 
 @pytest.fixture
 def default_tree():
