@@ -44,7 +44,7 @@ class BinaryTree:
 	def find_max(self):
 		if not self.head:
 			return None
-		max_val = 0
+		max_val = self.head.value
 		current_row = [self.head]
 		while len(current_row):
 
@@ -61,10 +61,28 @@ class BinaryTree:
 
 		return max_val
 
+	def traverse_tree(self):
+		if not self.head:
+			return None
+		current_row = [self.head]
+		all_values = []
+		while len(current_row):
+
+			root = current_row[0]
+			current_row.pop(0)
+			all_values.append(root.value)
+
+			if root.left:
+				current_row.append(root.left)
+			if root.right:
+				current_row.append(root.right)
+
+		return all_values
+
 
 if __name__ == '__main__':
 	xmas = BinaryTree()
-	for i in range(1000):
+	for i in range(2000):
 		xmas.add(i)
 	# xmas.add(5)
 	# xmas.add(3)
@@ -80,3 +98,4 @@ if __name__ == '__main__':
 	#   8     10    17     19
 	# 1   3
 	print(xmas.find_max())
+	print(xmas.traverse_tree())
