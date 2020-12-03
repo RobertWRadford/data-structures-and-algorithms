@@ -154,7 +154,7 @@ class BinaryTree:
 
 if __name__ == '__main__':
 	xmas = BinaryTree()
-	for i in range(1000):
+	for i in range(300):
 		xmas.add(i)
 	# xmas.add(5)
 	# xmas.add(3)
