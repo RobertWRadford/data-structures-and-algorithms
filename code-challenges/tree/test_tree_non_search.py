@@ -12,6 +12,9 @@ def test_max_of_empty(default_tree):
 	xmas = BinaryTree()
 	assert xmas.find_max() is None
 
+def test_return_all_nodes(default_tree):
+	assert default_tree.traverse_tree() == [5,3,6,8,10,17,19,1,3]
+
 @pytest.fixture
 def default_tree():
 	xmas = BinaryTree()
