@@ -89,6 +89,8 @@ def QuickSort(arr, left, right):
 
 int_arr = [random.randint(0,26) for i in range(31)]
 
+print(int_arr)
+
 #simple sort reverse for testing
 ReverseSort(int_arr)
 
